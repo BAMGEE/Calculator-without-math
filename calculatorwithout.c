@@ -56,7 +56,7 @@ int main()
  *----------------------------------------------------------------------------------------------*/
 void Description(int* pipFuncNum)
 {
-    printf("\n\n[Calculator with math function]\n\n");
+    printf("\n\n[Calculator without math function]\n\n");
     printf("¿øÇÏ´Â ±â´ÉÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n");
     printf("1. µ¡¼À addition\n");
     printf("2. »¬¼À subtraction\n");
@@ -167,28 +167,30 @@ double exp(double pdpCalcNum)
 {
     int i, j;
     int liCntNum = 0;
+    double ldPowNum;
     double ldResultNum = 0;
 
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < 14; i++)
     {
-        for (j = 0; j < i; j++)
+        ldPowNum = pdpCalcNum;
+
+        for (j = 0; j < (i - 1); j++)
         {
-            pdpCalcNum *= pdpCalcNum;
+            ldPowNum *= pdpCalcNum;
         }
 
         if (liCntNum == 0)
         {
             ldResultNum += 1;
+            liCntNum = 1;
         }
         else
         {
-            ldResultNum += pdpCalcNum / (liCntNum + i);
+            liCntNum *= i;
+            ldResultNum += ldPowNum / liCntNum;
         }
-
-        liCntNum += i;
-
+        printf("ldResultNum : %g\n", ldResultNum);
     }
-
     return ldResultNum;
 } /* End of exp */
 
